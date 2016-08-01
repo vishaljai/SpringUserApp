@@ -1,5 +1,7 @@
 package com.controller;
 
+import javax.enterprise.inject.Model;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,9 +41,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(path="/login", method=RequestMethod.POST)
-	public ModelAndView login(@RequestParam int id, @RequestParam String password){
+	public ModelAndView login(@RequestParam String username, @RequestParam String password){
 		
-		User user = userService.loginUser(id, password);
+		User user = userService.loginUser(username, password);
 		
 		if(user != null){
 			mv.setViewName("Home");
@@ -54,5 +56,10 @@ public class UserController {
 		
 		return mv;
 	}
-
+	
+	@RequestMapping(path="/update",method=RequestMethod.POST)
+	public void update(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String password){
+		
+		userService.updateUser(firstName, lastName,password);
+	}
 }

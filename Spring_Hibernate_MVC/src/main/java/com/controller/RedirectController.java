@@ -15,4 +15,15 @@ public class RedirectController {
 	public String login(){
 		return "Login";
 	}
+	
+	@RequestMapping(path="/updatePage")
+	public String update(){
+		return "Update";
+	}
+	
+	@RequestMapping(path="/deletePage")
+	public String delete(){
+		return "Delete";
+	}
+	
 }

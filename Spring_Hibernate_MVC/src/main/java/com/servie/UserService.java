@@ -18,16 +18,14 @@ public class UserService {
 		return userDao.addUser(username, password, firstName, lastName);
 	}
 	
-	public User loginUser(int id, String password){
-		
-		user =  userDao.loginUser(id, password);
-		System.out.println("Hello");
-		System.out.println(user.getFirstName());
-		if(id == user.getId() && password.equals(user.getPassword())){
+	public User loginUser(String username, String password){
+		user =  userDao.loginUser(username, password);
 		return user;
 		}
-		return null;
+	
+	public void updateUser(String firstName, String lastName, String password){
+		userDao.updateUser(firstName, lastName,password);
+		//return user;
+	}
 		
 	}
-
-}
